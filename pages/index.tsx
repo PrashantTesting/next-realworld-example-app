@@ -14,7 +14,7 @@ const Home = () => (
         content="Next.js + SWR codebase containing realworld examples (CRUD, auth, advanced patterns, etc) that adheres to the realworld spec and API"
       />
     </Head>
-    {console.log("build var", process.env.NEXT_PUBLIC_TEST_VARIABLE)}
+    {console.log("build variable", process.env.NEXT_PUBLIC_TEST_VARIABLE)}
     <div className="home-page">
       <Banner />
       <div className="container page">
