@@ -10,7 +10,7 @@ services:
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
     external:
       hosts:
-        - "bs-test.pp.argonaut.live"
+        - "bs-prashant.dev.argonaut.live"
       hostPort: 443
       paths: ["/"]
 
@@ -58,7 +58,7 @@ livenessProbe:
   timeoutSeconds: 0
 # Can only do one of the httpGet and exec handler methods for readinessProbe
 readinessProbe:
-  :
+  httpGet:
     path: /
     port: 3000
   
