@@ -95,6 +95,6 @@ jobs:
         run: |
           chmod +x ./art
           sudo mv ./art /usr/local/bin/art
-          sudo art configure --key ${{ secrets.ART_KEY }} --secret ${{ secrets.ART_SECRET }}
-          sudo art app deploy -f .art/argonaut-dev-bs-prashant.yaml --set image="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-2.amazonaws.com/argonaut/bs-prashant" --set 'labels.argonaut\.dev/git-provider'='github' --set argonaut.git-provider='github' --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"  --set appName="bs-prashant"  --set argonaut.env="dev"  --set argonaut.region="us-east-2"  --set argonaut.cluster="dev"  --set argonaut.serviceType="stateless"  --set argonaut.imageRegistry="ecr" 
+          art configure --key ${{ secrets.ART_KEY }} --secret ${{ secrets.ART_SECRET }}
+          art app deploy -f .art/argonaut-dev-bs-prashant.yaml --set image="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-2.amazonaws.com/argonaut/bs-prashant" --set 'labels.argonaut\.dev/git-provider'='github' --set argonaut.git-provider='github' --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"  --set appName="bs-prashant"  --set argonaut.env="dev"  --set argonaut.region="us-east-2"  --set argonaut.cluster="dev"  --set argonaut.serviceType="stateless"  --set argonaut.imageRegistry="ecr" 
 
