@@ -6,8 +6,13 @@ imageTag: "latest"
 
 
 services:
-  - port: 0
+  - port: 3000
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
+    external:
+      hosts:
+        - "bs-test.pp.argonaut.live"
+      hostPort: 443
+      paths: ["/"]
 
 argonaut:
   env: dev
@@ -21,7 +26,7 @@ persistentStorage:
 
 replicas: 1
 minReplicas: 1
-maxReplicas: 8
+maxReplicas: 1
 resources:
   requests:
     cpu: "500m"
@@ -37,7 +42,7 @@ resources:
 livenessProbe:
   httpGet:
     path: /
-    port: 80
+    port: 3000
   
   # exec:
   #   command:
@@ -46,16 +51,16 @@ livenessProbe:
   #     - |
   #       #!/usr/bin/env sh
   #       test -f /etc/
-  failureThreshold: 5
-  initialDelaySeconds: 10
-  successThreshold: 3
-  periodSeconds: 10
-  timeoutSeconds: 5
+  failureThreshold: 0
+  initialDelaySeconds: 0
+  successThreshold: 0
+  periodSeconds: 0
+  timeoutSeconds: 0
 # Can only do one of the httpGet and exec handler methods for readinessProbe
 readinessProbe:
-  httpGet:
+  :
     path: /
-    port: 80
+    port: 3000
   
   # # Handler 2
   # exec:
@@ -66,11 +71,11 @@ readinessProbe:
   #       #!/usr/bin/env sh
   #       test -f /etc/
   # Common fields
-  failureThreshold: 5
-  initialDelaySeconds: 10
-  successThreshold: 3
-  periodSeconds: 10
-  timeoutSeconds: 5
+  failureThreshold: 0
+  initialDelaySeconds: 0
+  successThreshold: 0
+  periodSeconds: 0
+  timeoutSeconds: 0
 externalServices: []
 podAnnotations:
   {}
